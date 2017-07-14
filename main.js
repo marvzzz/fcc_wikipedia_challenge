@@ -10,6 +10,7 @@ $(document).ready(function(){
       type:'GET',
       url:'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&origin=*&formatversion=2&gsrsearch='+ term,
       success: function(data){
+        console.log(data.query.pages.length);
         //console.log(data.query.pages);
         //global function
         function items(){
@@ -20,7 +21,7 @@ $(document).ready(function(){
       }
     })
   }wikiViewer();
-
+  console.log(data.query.pages.length);
   console.log(itemLoop);
 
   $('.samp-btn').on('click', function(){
