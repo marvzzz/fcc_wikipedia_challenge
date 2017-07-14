@@ -21,7 +21,6 @@ $(document).ready(function(){
       }
     })
   }wikiViewer();
-  console.log(data.query.pages.length);
   console.log(itemLoop);
 
   $('.samp-btn').on('click', function(){
