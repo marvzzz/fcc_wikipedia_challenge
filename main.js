@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var term = 'popeye'; //value for testing
+    var term ; //value for testing
     var dataVal;
     var itemLoop;
 
@@ -10,24 +10,27 @@ $(document).ready(function(){
       type:'GET',
       url:'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&origin=*&formatversion=2&gsrsearch='+ term,
       success: function(data){
-        console.log(data.query.pages.length);
         //console.log(data.query.pages);
         //global function
         function items(){
          for(var i=0; i<data.query.pages.length; i++){
-            return data.query.pages[i];
+             data.query.pages[i];
           }
-        } items(data);
+        }
       }
     })
   }wikiViewer();
-  console.log(itemLoop);
 
-  $('.samp-btn').on('click', function(){
+  $('.query-btn').on('click', function(){
     term = $('.searchInput').val();
     $('.displayContent').text();
-    wikiViewer();
+    //wikiViewer(term);
+    console.log(term);
   })
+
+
+
+
 
   /*// button inside the form
   $('#btn-search').on('click', function(e){
