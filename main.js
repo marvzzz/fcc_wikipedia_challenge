@@ -16,16 +16,16 @@ $(document).ready(function(){
          for(var i=0; i<data.query.pages.length; i++){
              data.query.pages[i];
           }
-        }
+        }console.log(term + "test");
       }
     })
-  }wikiViewer();
+  }//wikiViewer();
 
   $('.query-btn').on('click', function(){
     term = $('.searchInput').val();
     $('.displayContent').text();
-    //wikiViewer(term);
-    console.log(term);
+    wikiViewer();
+    //console.log(term);
   })
 
 
