@@ -13,21 +13,19 @@ $(document).ready(function(){
   }
 
 
-  function items(datas){
+  function items(data){
     var html = "";
-    var data = datas.query;
-   for(var i=0; i<data.pages.length; i++) {
-     var description =data.pages[i].extract;
-     var title = data.pages[i].title;
-
-     html = html + "<h2 class='title'>" + title + "</h2><p class='description'>" + description + "</p>"
+    var data = data.query;
+    for(var i=0; i<data.pages.length; i++) {
+      var description =data.pages[i].extract;
+      var title = data.pages[i].title;
+      html = html + "<h2 class='title'>" + title + "</h2><p class='description'>" + description + "</p>"
    }
    $(".displayContent").html(html);
    animate();
   }
 
   function animate() {
-
   }
 
   $('#search').on('submit', function(event){
