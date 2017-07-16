@@ -1,32 +1,44 @@
 $(document).ready(function(){
 
-    var term ; //value for testing
-    var dataVal;
-    var itemLoop;
 
-  function wikiViewer(){
+  function wikiViewer(term){
     $.ajax({
       //dataType:'JSONP',
       type:'GET',
       url:'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&origin=*&formatversion=2&gsrsearch='+ term,
       success: function(data){
-        //console.log(data.query.pages);
-        //global function
-        function items(){
-         for(var i=0; i<data.query.pages.length; i++){
-             data.query.pages[i];
-          }
-        }console.log(term + "test");
+      items(data);
       }
     })
-  }//wikiViewer();
+  }
 
-  $('.query-btn').on('click', function(){
-    term = $('.searchInput').val();
+
+  function items(datas){
+    var html = "";
+    var data = datas.query;
+   for(var i=0; i<data.pages.length; i++) {
+     var description =data.pages[i].extract;
+     var title = data.pages[i].title;
+
+     html = html + "<h2 class='title'>" + title + "</h2><p class='description'>" + description + "</p>"
+   }
+   $(".displayContent").html(html);
+   animate();
+  }
+
+  function animate() {
+
+  }
+
+  $('#search').on('submit', function(event){
+    event.preventDefault();
+    var term = $('.searchInput').val();
     $('.displayContent').text();
-    wikiViewer();
-    //console.log(term);
+    wikiViewer(term);
+    console.log(term);
   })
+
+
 
 
 
